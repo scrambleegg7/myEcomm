@@ -35,7 +35,9 @@ mongoose.connection.on("error", err => {
 
 
 // bring in routes
-const userRoutes = require('./routes/user')
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
+
 
 const myOwnMiddleWare = (req, res, next) => {
     console.log("middleware applied....");
@@ -51,9 +53,8 @@ app.use(cookieParser());
 
 app.use(expressValidator());
 
-
+app.use("/api",authRoutes);
 app.use("/api",userRoutes);
-
 
 app.listen(port, ()  => {
     console.log(`A node js api is listening on port : ${port}`);
