@@ -14,7 +14,7 @@ exports.userById = (req, res, next, id) => {
             })
         }
 
-        console.log("userById", user)
+        console.log("userById from user/controllers", user)
 
         req.profile = user;
         next();
