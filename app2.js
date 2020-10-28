@@ -37,6 +37,10 @@ mongoose.connection.on("error", err => {
 // bring in routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const categoryRoutes = require('./routes/category');
+const productRoutes = require('./routes/product');
+
+
 
 
 const myOwnMiddleWare = (req, res, next) => {
@@ -50,11 +54,13 @@ app.use( morgan("dev") );
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-
 app.use(expressValidator());
 
 app.use("/api",authRoutes);
 app.use("/api",userRoutes);
+app.use("/api",categoryRoutes);
+app.use("/api",productRoutes);
+
 
 app.listen(port, ()  => {
     console.log(`A node js api is listening on port : ${port}`);
