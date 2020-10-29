@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const morgan = require('morgan');
 
+const cors = require('cors')
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -53,7 +54,7 @@ const myOwnMiddleWare = (req, res, next) => {
 app.use( morgan("dev") );
 app.use(bodyParser.json());
 app.use(cookieParser());
-
+app.use(cors())
 app.use(expressValidator());
 
 app.use("/api",authRoutes);
