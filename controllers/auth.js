@@ -83,7 +83,9 @@ exports.requireSignin = expressJwt({
 exports.isAuth = (req, res, next) => {
 
 
-    console.log("isAuth from router/user", req.auth)
+    console.log("** isAuth req.auth from router/user", req.auth)
+    console.log("** isAuth req.profile from router/user", req.profile)
+    
       
     let user = req.profile && req.auth && (req.profile._id == req.auth._id)
 
